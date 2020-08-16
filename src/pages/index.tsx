@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { Layout, SEO } from "@/components/"
 import "@/styles/sass/index.scss"
 
@@ -17,6 +17,7 @@ const Home: React.FC = () => {
             tags {
               name
             }
+            slug
           }
         }
       }
@@ -30,17 +31,20 @@ const Home: React.FC = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      {posts.map(({ node: { description, tags, title, updatedAt } }) => (
-        <div>
-          <div>{title}</div>
-          <div>{description.description}</div>
-          <div>
-            {tags &&
-              tags.map((tag, index) => <span key={index}>{tag.name}</span>)}
+      {posts.map(
+        ({ node: { description, tags, title, updatedAt, slug } }, index) => (
+          <div key={index}>
+            <div>{title}</div>
+            <div>{description.description}</div>
+            <div>
+              {tags &&
+                tags.map((tag, index) => <span key={index}>{tag.name}</span>)}
+            </div>
+            <div>{updatedAt}</div>
+            <Link to={`/posts/${slug}`}>Link</Link>
           </div>
-          <div>{updatedAt}</div>
-        </div>
-      ))}
+        )
+      )}
     </Layout>
   )
 }
