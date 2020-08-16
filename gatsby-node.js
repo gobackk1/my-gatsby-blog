@@ -34,7 +34,7 @@ exports.createPages = ({ graphql, actions }) =>
       result.data.allContentfulBlogPost.edges.forEach(edge => {
         actions.createPage({
           path: `/posts/${edge.node.slug}/`,
-          component: path.resolve("./src/views/Post.js"),
+          component: path.resolve("./src/views/Post.tsx"),
           context: {
             slug: edge.node.slug,
             id: edge.node.id,
@@ -45,3 +45,13 @@ exports.createPages = ({ graphql, actions }) =>
     .catch(error => {
       console.log(error)
     })
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src/"),
+      },
+    },
+  })
+}
