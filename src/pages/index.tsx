@@ -1,22 +1,48 @@
 import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { Layout, Image, SEO } from "@/components/"
+import { useStaticQuery, graphql } from "gatsby"
+import { Layout, SEO } from "@/components/"
 import "@/styles/sass/index.scss"
 
-const IndexPage = () => {
+const Home: React.FC = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulBlogPost {
+        edges {
+          node {
+            title
+            description {
+              description
+            }
+            updatedAt(locale: "ja")
+            tags {
+              name
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const posts = data.allContentfulBlogPost.edges
+
+  console.log(data.allContentfulBlogPost.edges)
+
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+      {posts.map(({ node: { description, tags, title, updatedAt } }) => (
+        <div>
+          <div>{title}</div>
+          <div>{description.description}</div>
+          <div>
+            {tags &&
+              tags.map((tag, index) => <span key={index}>{tag.name}</span>)}
+          </div>
+          <div>{updatedAt}</div>
+        </div>
+      ))}
     </Layout>
   )
 }
 
-export default IndexPage
+export default Home

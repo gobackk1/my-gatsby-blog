@@ -8,22 +8,26 @@ type Props = {
   siteTitle: string
 }
 
-const style = css`
-  background-color: ${COLOR.BLUE};
-`
+const style = {
+  header: css`
+    padding: 20px;
+    background-color: ${COLOR.HEADER.BG};
+    color: ${COLOR.HEADER.TEXT};
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  `,
+}
 
 export const Header: React.FC<Props> = ({ siteTitle }) => (
-  <header css={style}>
-    <h1 style={{ margin: 0 }}>
-      <Link
-        to="/"
-        style={{
-          color: `white`,
-          textDecoration: `none`,
-        }}
-      >
-        {siteTitle}
-      </Link>
+  <header css={style.header}>
+    <h1>
+      <Link to="/">{siteTitle}</Link>
     </h1>
+    <ul>
+      <li>
+        <Link to="/work/">work</Link>
+      </li>
+    </ul>
   </header>
 )

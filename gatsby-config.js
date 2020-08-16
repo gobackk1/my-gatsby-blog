@@ -3,9 +3,9 @@ require("dotenv").config({ path: `./.env.${env}` })
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `NO TITLE`,
+    description: `このサイトは、マークアップエンジニアの趣味で作られたポートフォリオ用ブログです。`,
+    author: `kengo kawabata`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
