@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-
-import { Layout, Image, SEO } from "../components/"
+import { Layout, Image, SEO } from "@/components/"
+import "@/styles/sass/index.scss"
 
 const IndexPage = () => {
   return (
