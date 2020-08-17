@@ -26,8 +26,6 @@ const Home: React.FC = () => {
 
   const posts = data.allContentfulBlogPost.edges
 
-  console.log(data.allContentfulBlogPost.edges)
-
   return (
     <Layout>
       <SEO title="Home" />

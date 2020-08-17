@@ -1,8 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
-// import style from "styled-jsx"
 import { css } from "@emotion/core"
-import { colorHeaderBg, colorHeaderText } from "@/styles/sass/index.scss"
+import { COLOR } from "@/styles"
 
 type Props = {
   siteTitle: string
@@ -11,11 +10,11 @@ type Props = {
 const style = {
   header: css`
     padding: 20px;
-    background-color: ${colorHeaderBg};
-    color: ${colorHeaderText};
-    font-weight: bold;
+    background-color: ${COLOR.HEADER.BG};
+    color: ${COLOR.HEADER.TEXT};
     display: flex;
     justify-content: space-between;
+    @include test();
   `,
 }
 
