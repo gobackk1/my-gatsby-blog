@@ -8,11 +8,14 @@
 
 const path = require("path")
 
-exports.createPages = ({ graphql, actions }) =>
-  graphql(
+exports.createPages = async ({ graphql, actions }) => {
+  const {
+    data: { posts, tags },
+    errors,
+  } = await graphql(
     `
       {
-        allContentfulBlogPost {
+        posts: allContentfulBlogPost {
           edges {
             node {
               id
@@ -25,26 +28,40 @@ exports.createPages = ({ graphql, actions }) =>
             }
           }
         }
+        tags: allContentfulTag {
+          totalCount
+          nodes {
+            name
+            slug
+          }
+        }
       }
     `
   )
-    .then(result => {
-      if (result.errors) console.log(result.errors)
 
-      result.data.allContentfulBlogPost.edges.forEach(edge => {
-        actions.createPage({
-          path: `/posts/${edge.node.slug}/`,
-          component: path.resolve("./src/template/Post.tsx"),
-          context: {
-            slug: edge.node.slug,
-            id: edge.node.id,
-          },
-        })
-      })
+  if (errors) console.log(result.errors)
+
+  posts.edges.forEach(edge => {
+    actions.createPage({
+      path: `/posts/${edge.node.slug}/`,
+      component: path.resolve("./src/template/Post.tsx"),
+      context: {
+        slug: edge.node.slug,
+        id: edge.node.id,
+      },
     })
-    .catch(error => {
-      console.log(error)
+  })
+
+  tags.nodes.forEach(tag => {
+    actions.createPage({
+      path: `/tags/${tag.slug}/`,
+      component: path.resolve("./src/template/Tag.tsx"),
+      context: {
+        slug: tag.slug,
+      },
     })
+  })
+}
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({

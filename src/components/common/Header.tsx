@@ -14,7 +14,7 @@ const style = {
     color: ${COLOR.HEADER.TEXT};
     display: flex;
     justify-content: space-between;
-    @include test();
+    font-weight: bold;
   `,
 }
 

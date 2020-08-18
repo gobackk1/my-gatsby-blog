@@ -1,6 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { Layout, SEO } from "@/components/"
+import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
 
 const Home: React.FC = () => {
@@ -29,20 +29,8 @@ const Home: React.FC = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      {posts.map(
-        ({ node: { description, tags, title, updatedAt, slug } }, index) => (
-          <div key={index}>
-            <div>{title}</div>
-            <div>{description.description}</div>
-            <div>
-              {tags &&
-                tags.map((tag, index) => <span key={index}>{tag.name}</span>)}
-            </div>
-            <div>{updatedAt}</div>
-            <Link to={`/posts/${slug}`}>Link</Link>
-          </div>
-        )
-      )}
+      <Title type="h2">記事一覧</Title>
+      <Posts data={posts} />
     </Layout>
   )
 }

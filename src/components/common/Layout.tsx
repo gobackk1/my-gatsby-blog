@@ -7,7 +7,24 @@
 
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Header } from "../../components"
+import { Header, Footer } from "@/components"
+import { css } from "@emotion/core"
+import { SETTING, COLOR } from "@/styles"
+
+const style = {
+  container: css`
+    margin: 0 auto;
+    max-width: ${SETTING.CONTAINER.WIDTH}px;
+    width: 96%;
+    padding: 30px;
+    min-height: 800px;
+  `,
+  wrapper: css`
+    background-color: ${COLOR.SITE.BG};
+    color: ${COLOR.SITE.TEXT};
+    min-height: 1000px;
+  `,
+}
 
 export const Layout: React.FC = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -21,22 +38,12 @@ export const Layout: React.FC = ({ children }) => {
   `)
 
   return (
-    <>
+    <div css={style.wrapper}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div css={style.container}>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
       </div>
-    </>
+      <Footer />
+    </div>
   )
 }
