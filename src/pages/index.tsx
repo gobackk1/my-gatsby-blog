@@ -3,14 +3,9 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
 import IPost from "@/interfaces/IPost"
+import css from "@emotion/css"
 
-type Props = {
-  allContentfulBlogPost: {
-    edges: { node: IPost }[]
-  }
-}
-
-const Home: React.FC = () => {
+export default () => {
   const data: Props = useStaticQuery(graphql`
     {
       allContentfulBlogPost {
@@ -31,15 +26,25 @@ const Home: React.FC = () => {
     }
   `)
 
-  const posts = data.allContentfulBlogPost.edges
-
   return (
     <Layout>
       <SEO title="Home" />
-      <Title type="h2">記事一覧</Title>
-      <Posts data={posts} />
+      <div css={style.title}>
+        <Title type="h2">記事一覧</Title>
+      </div>
+      <Posts data={data.allContentfulBlogPost.edges} />
     </Layout>
   )
 }
 
-export default Home
+const style = {
+  title: css`
+    margin-bottom: 20px;
+  `,
+}
+
+type Props = {
+  allContentfulBlogPost: {
+    edges: { node: IPost }[]
+  }
+}

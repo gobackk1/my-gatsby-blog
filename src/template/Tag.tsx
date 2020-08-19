@@ -1,27 +1,27 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
 import IPost from "@/interfaces/IPost"
 import ITag from "@/interfaces/ITag"
+import css from "@emotion/css"
 
-type Props = {
-  data: {
-    postsData: {
-      edges: { node: IPost }[]
-    }
-    tag: ITag
-  }
-}
-
-export default ({ data: { postsData, tag } }: Props): JSX.Element => {
+export default ({ data: { postsData, tag } }: Props) => {
   return (
     <Layout>
       <SEO title="Tag" />
-      <Title type="h2">タグ: {tag.name}</Title>
+      <div css={style.title}>
+        <Title type="h2">タグ: {tag.name}</Title>
+      </div>
       <Posts data={postsData.edges} />
     </Layout>
   )
+}
+
+const style = {
+  title: css`
+    margin-bottom: 20px;
+  `,
 }
 
 export const pageQuery = graphql`
@@ -48,3 +48,12 @@ export const pageQuery = graphql`
     }
   }
 `
+
+type Props = {
+  data: {
+    postsData: {
+      edges: { node: IPost }[]
+    }
+    tag: ITag
+  }
+}

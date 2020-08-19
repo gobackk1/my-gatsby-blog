@@ -6,4 +6,9 @@ export default interface IPost {
   tags: string[]
   title: string
   updatedAt: string
+  body: {
+    childMarkdownRemark: {
+      html: string
+    }
+  }
 }
