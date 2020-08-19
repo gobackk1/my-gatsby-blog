@@ -1,9 +1,11 @@
-export default interface IPost {
+import { ITag } from "@/interfaces"
+
+export interface IPost {
   description: {
     description: string
   }
   slug: string
-  tags: string[]
+  tags: ITag[]
   title: string
   updatedAt: string
   body: {

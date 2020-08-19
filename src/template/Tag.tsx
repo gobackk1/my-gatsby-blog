@@ -2,8 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
-import IPost from "@/interfaces/IPost"
-import ITag from "@/interfaces/ITag"
+import { IPost, ITag } from "@/interfaces"
 import css from "@emotion/css"
 
 export default ({ data: { postsData, tag } }: Props) => {

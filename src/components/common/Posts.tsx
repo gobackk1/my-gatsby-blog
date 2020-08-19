@@ -1,13 +1,40 @@
 import React from "react"
-import { Link } from "gatsby"
-import IPost from "@/interfaces/IPost"
+import { IPost } from "@/interfaces"
 import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
-import { Title } from "@/components"
-import { COLOR } from "../../styles"
+import { Title, Tag } from "@/components"
+import { COLOR } from "@/styles"
+import { tagList } from "@/styles/common"
 
-type Props = {
-  data: { node: IPost }[]
+export const Posts: React.FC<Props> = ({ data }) => {
+  return (
+    <div css={style.postList}>
+      {data.map(
+        ({ node: { description, tags, title, updatedAt, slug } }, index) => (
+          <article
+            css={style.post}
+            key={index}
+            onClick={() => {
+              navigate(`/posts/${slug}`)
+            }}
+          >
+            <Title type="h3">{title}</Title>
+            <p>{description.description}</p>
+            {tags && (
+              <ul css={tagList}>
+                {tags.map(({ name, slug }, index) => (
+                  <li key={index}>
+                    <Tag name={name} slug={slug} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            <time>{new Date(updatedAt).toLocaleDateString()}</time>
+          </article>
+        )
+      )}
+    </div>
+  )
 }
 
 const style = {
@@ -35,11 +62,7 @@ const style = {
       margin-bottom: 20px;
     }
     ul {
-      display: flex;
       justify-content: flex-end;
-    }
-    li {
-      margin-right: 10px;
     }
   `,
   postList: css`
@@ -54,32 +77,6 @@ const style = {
   `,
 }
 
-export const Posts: React.FC<Props> = ({ data }) => {
-  return (
-    <div css={style.postList}>
-      {data.map(
-        ({ node: { description, tags, title, updatedAt, slug } }, index) => (
-          <article
-            css={style.post}
-            key={index}
-            onClick={() => {
-              navigate(`/posts/${slug}`)
-            }}
-          >
-            <Title type="h3">{title}</Title>
-            <p>{description.description}</p>
-            <ul>
-              {tags &&
-                tags.map((tag, index) => (
-                  <li css={style.tag} key={index}>
-                    <Link to="/work">{tag.name}</Link>
-                  </li>
-                ))}
-            </ul>
-            <time>{new Date(updatedAt).toLocaleDateString()}</time>
-          </article>
-        )
-      )}
-    </div>
-  )
+type Props = {
+  data: { node: IPost }[]
 }
