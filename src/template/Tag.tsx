@@ -2,8 +2,19 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
+import IPost from "@/interfaces/IPost"
+import ITag from "@/interfaces/ITag"
 
-export default ({ data: { postsData, tag } }) => {
+type Props = {
+  data: {
+    postsData: {
+      edges: { node: IPost }[]
+    }
+    tag: ITag
+  }
+}
+
+export default ({ data: { postsData, tag } }: Props): JSX.Element => {
   return (
     <Layout>
       <SEO title="Tag" />
