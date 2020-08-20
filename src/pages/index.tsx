@@ -2,7 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import "@/styles/sass/index.scss"
-import IPost from "@/interfaces/IPost"
+import "github-markdown-css"
+import "prismjs/themes/prism-tomorrow.css"
+import "prismjs/plugins/line-numbers/prism-line-numbers.css"
+import { IPost } from "@/interfaces/IPost"
 import css from "@emotion/css"
 
 export default () => {

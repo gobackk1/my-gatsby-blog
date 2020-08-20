@@ -3,7 +3,7 @@ import css from "@emotion/css"
 import { COLOR } from "@/styles"
 
 type Props = {
-  type: "h2" | "h3" | "h4" | "h5" | "h6"
+  type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 }
 
 const common = `
@@ -11,12 +11,17 @@ const common = `
 `
 
 const style = {
+  h1: css`
+    ${common};
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+  `,
   h2: css`
     ${common};
     padding-bottom: 10px;
     font-weight: bold;
     font-size: 24px;
-    /* border-bottom: 1px solid; */
   `,
   h3: css`
     ${common};
@@ -29,6 +34,8 @@ const style = {
 
 export const Title: React.FC<Props> = ({ type, children }) => {
   switch (type) {
+    case "h1":
+      return <h1 css={style.h1}>{children}</h1>
     case "h2":
       return <h2 css={style.h2}>{children}</h2>
     case "h3":

@@ -14,10 +14,15 @@ export const COLOR = {
   SITE: {
     BG: PRIMARY,
     TEXT: WHITE,
+    TEXT_REVERSAL: BLACK,
   },
 
   HEADER: {
     BG: PRIMARY,
     TEXT: WHITE,
+  },
+
+  CODE_BLOCK: {
+    HIGHLIGHT: "#3c5561",
   },
 } as const
