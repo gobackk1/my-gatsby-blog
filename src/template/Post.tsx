@@ -1,25 +1,35 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Layout, SEO, Title } from "@/components"
+import { Layout, SEO, Title, Tag } from "@/components"
 import { IPost } from "@/interfaces"
 import css from "@emotion/css"
 import { COLOR } from "@/styles"
+import { tagList } from "@/styles/common"
 
 export default ({ data }: Props) => {
   const post = data.contentfulBlogPost
   return (
     <Layout>
       <SEO title={post.title}></SEO>
-      <div className="post">
-        <Title type="h1">{post.title}</Title>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: post.body.childMarkdownRemark.html,
-          }}
-          className="markdown-body"
-          css={style.markdown}
-        ></div>
-      </div>
+      <time>{post.updatedAt}</time>
+      <Title type="h1">{post.title}</Title>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: post.body.childMarkdownRemark.html,
+        }}
+        className="markdown-body"
+        css={style.markdown}
+      ></div>
+      {post.tags && (
+        <ul css={style.tagList}>
+          <li>タグ:</li>
+          {post.tags.map(({ name, slug }, index) => (
+            <li key={index}>
+              <Tag name={name} slug={slug} />
+            </li>
+          ))}
+        </ul>
+      )}
     </Layout>
   )
 }
@@ -32,6 +42,7 @@ const style = {
     *:not(code) {
       color: ${COLOR.SITE.TEXT};
     }
+
     table td,
     table th {
       color: ${COLOR.SITE.TEXT_REVERSAL};
@@ -68,6 +79,15 @@ const style = {
       padding-left: 2.8em;
     }
   `,
+  dateAndTag: css`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  `,
+  tagList: css`
+    ${tagList};
+    justify-content: flex-end;
+  `,
 }
 
 type Props = {
@@ -81,6 +101,11 @@ export const pageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       slug
+      updatedAt(formatString: "YYYY MM/DD", locale: "ja")
+      tags {
+        name
+        slug
+      }
       body {
         childMarkdownRemark {
           html

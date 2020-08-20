@@ -29,7 +29,7 @@ export const Posts: React.FC<Props> = ({ data }) => {
                 ))}
               </ul>
             )}
-            <time>{new Date(updatedAt).toLocaleDateString()}</time>
+            <time>{updatedAt}</time>
           </article>
         )
       )}
