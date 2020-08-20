@@ -34,7 +34,7 @@ export const pageQuery = graphql`
           description {
             description
           }
-          updatedAt(formatString: "YYYY MM/DD", locale: "ja")
+          updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
           tags {
             name
           }

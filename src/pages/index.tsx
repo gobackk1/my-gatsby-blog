@@ -18,7 +18,7 @@ export default () => {
             description {
               description
             }
-            updatedAt(formatString: "YYYY MM/DD", locale: "ja")
+            updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
             tags {
               name
             }

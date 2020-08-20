@@ -11,7 +11,7 @@ export default ({ data }: Props) => {
   return (
     <Layout>
       <SEO title={post.title}></SEO>
-      <time>{post.updatedAt}</time>
+      <time css={style.time}>{post.updatedAt}</time>
       <Title type="h1">{post.title}</Title>
       <div
         dangerouslySetInnerHTML={{
@@ -88,6 +88,10 @@ const style = {
     ${tagList};
     justify-content: flex-end;
   `,
+  time: css`
+    margin-bottom: 10px;
+    display: block;
+  `,
 }
 
 type Props = {
@@ -101,7 +105,7 @@ export const pageQuery = graphql`
     contentfulBlogPost(slug: { eq: $slug }) {
       title
       slug
-      updatedAt(formatString: "YYYY MM/DD", locale: "ja")
+      updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
       tags {
         name
         slug

@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               slug
-              updatedAt(formatString: "YYYY MM/DD", locale: "ja")
+              updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
               tags {
                 name
                 slug
