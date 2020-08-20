@@ -1,13 +1,14 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { Layout, SEO, Title, Tag } from "@/components"
 import { IPost } from "@/interfaces"
 import css from "@emotion/css"
 import { COLOR } from "@/styles"
 import { tagList } from "@/styles/common"
 
-export default ({ data }: Props) => {
+export default ({ data, pathContext }: Props) => {
   const post = data.contentfulBlogPost
+  const { next, prev } = pathContext
   return (
     <Layout>
       <SEO title={post.title}></SEO>
@@ -30,6 +31,22 @@ export default ({ data }: Props) => {
           ))}
         </ul>
       )}
+      <div css={style.pager}>
+        <div>
+          {next && (
+            <Link to={`/posts/${next.slug}`} css={style.next}>
+              {next.title}
+            </Link>
+          )}
+        </div>
+        <div>
+          {prev && (
+            <Link to={`/posts/${prev.slug}`} css={style.prev}>
+              {prev.title}
+            </Link>
+          )}
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -92,11 +109,43 @@ const style = {
     margin-bottom: 10px;
     display: block;
   `,
+  pager: css`
+    display: flex;
+    justify-content: space-between;
+  `,
+  next: css`
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+      transform: rotate(135deg);
+    }
+  `,
+  prev: css`
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+      transform: rotate(-45deg);
+    }
+  `,
 }
 
 type Props = {
   data: {
     contentfulBlogPost: IPost
+  }
+  pathContext: {
+    slug: string
+    id: string
+    next: { title: string; slug: string }
+    prev: { title: string; slug: string }
   }
 }
 

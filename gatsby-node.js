@@ -31,6 +31,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
               }
             }
+            next {
+              slug
+              title
+            }
+            prev: previous {
+              slug
+              title
+            }
           }
         }
         tags: allContentfulTag {
@@ -46,13 +54,15 @@ exports.createPages = async ({ graphql, actions }) => {
 
   if (errors) console.log(result.errors)
 
-  posts.edges.forEach(edge => {
+  posts.edges.forEach(({ node, next, prev }) => {
     actions.createPage({
-      path: `/posts/${edge.node.slug}/`,
+      path: `/posts/${node.slug}/`,
       component: path.resolve("./src/template/Post.tsx"),
       context: {
-        slug: edge.node.slug,
-        id: edge.node.id,
+        slug: node.slug,
+        id: node.id,
+        next,
+        prev,
       },
     })
   })
