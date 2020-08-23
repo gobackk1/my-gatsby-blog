@@ -7,8 +7,12 @@
 // You can delete this file if you're not using it
 
 const path = require("path")
+const fs = require("fs")
 
 exports.createPages = async ({ graphql, actions }) => {
+  const postsJson = {
+    allPosts: [],
+  }
   const {
     data: { posts, tags },
     errors,
@@ -24,12 +28,14 @@ exports.createPages = async ({ graphql, actions }) => {
               tags {
                 name
                 slug
+                id
               }
               body {
                 childMarkdownRemark {
                   html
                 }
               }
+              title
             }
             next {
               slug
@@ -65,7 +71,17 @@ exports.createPages = async ({ graphql, actions }) => {
         prev,
       },
     })
+
+    postsJson.allPosts.push({
+      updatedAt: node.updatedAt,
+      title: node.title,
+      tags: node.tags,
+      slug: node.slug,
+      id: node.id,
+    })
   })
+
+  fs.writeFileSync("./data/articles.json", JSON.stringify(postsJson, null, 4))
 
   tags.nodes.forEach(tag => {
     actions.createPage({

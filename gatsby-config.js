@@ -1,5 +1,4 @@
-const env = process.env.NODE_ENV || "development"
-require("dotenv").config({ path: `./.env.${env}` })
+require("dotenv").config({ path: `./.env` })
 
 module.exports = {
   siteMetadata: {
@@ -60,6 +59,13 @@ module.exports = {
       resolve: `gatsby-plugin-tsconfig-paths`,
       options: {
         configFile: `${__dirname}/tsconfig.json`,
+      },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/data/`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

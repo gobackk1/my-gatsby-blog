@@ -1,6 +1,7 @@
 import { ITag } from "@/interfaces"
 
 export interface IPost {
+  id: string
   description: {
     description: string
   }
@@ -11,6 +12,7 @@ export interface IPost {
   body: {
     childMarkdownRemark: {
       html: string
+      excerpt: string
     }
   }
 }

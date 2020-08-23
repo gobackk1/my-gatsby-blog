@@ -9,30 +9,28 @@ import { tagList } from "@/styles/common"
 export const Posts: React.FC<Props> = ({ data }) => {
   return (
     <div css={style.postList}>
-      {data.map(
-        ({ node: { description, tags, title, updatedAt, slug } }, index) => (
-          <article
-            css={style.post}
-            key={index}
-            onClick={() => {
-              navigate(`/posts/${slug}`)
-            }}
-          >
-            <Title type="h3">{title}</Title>
-            <p>{description.description}</p>
-            {tags && (
-              <ul css={tagList}>
-                {tags.map(({ name, slug }, index) => (
-                  <li key={index}>
-                    <Tag name={name} slug={slug} />
-                  </li>
-                ))}
-              </ul>
-            )}
-            <time>{updatedAt}</time>
-          </article>
-        )
-      )}
+      {data.map(({ node: { tags, title, updatedAt, slug, body } }, index) => (
+        <article
+          css={style.post}
+          key={index}
+          onClick={() => {
+            navigate(`/posts/${slug}`)
+          }}
+        >
+          <Title type="h3">{title}</Title>
+          <p>{body.childMarkdownRemark.excerpt}</p>
+          {tags && (
+            <ul css={tagList}>
+              {tags.map(({ name, slug }, index) => (
+                <li key={index}>
+                  <Tag name={name} slug={slug} />
+                </li>
+              ))}
+            </ul>
+          )}
+          <time>{updatedAt}</time>
+        </article>
+      ))}
     </div>
   )
 }

@@ -23,6 +23,11 @@ export default () => {
               name
             }
             slug
+            body {
+              childMarkdownRemark {
+                excerpt(pruneLength: 100, format: PLAIN)
+              }
+            }
           }
         }
       }
