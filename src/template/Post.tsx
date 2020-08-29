@@ -1,10 +1,9 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import { Layout, SEO, Title, Tag } from "@/components"
+import { Layout, SEO, Title, Tag, Content } from "@/components"
 import { IPost, ITag } from "@/interfaces"
 import css from "@emotion/css"
 import { COLOR } from "@/styles"
-import { tagList } from "@/styles/common"
 
 export default ({ data, pathContext }: Props) => {
   const { post, json } = data
@@ -17,23 +16,7 @@ export default ({ data, pathContext }: Props) => {
       <SEO title={post.title}></SEO>
       <time css={style.time}>{post.updatedAt}</time>
       <Title type="h1">{post.title}</Title>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: post.body.childMarkdownRemark.html,
-        }}
-        className="markdown-body"
-        css={style.markdown}
-      ></div>
-      {post.tags && (
-        <ul css={style.tagList}>
-          <li>タグ:</li>
-          {post.tags.map(({ name, slug }, index) => (
-            <li key={index}>
-              <Tag name={name} slug={slug} />
-            </li>
-          ))}
-        </ul>
-      )}
+      <Content post={post} />
       <div css={style.pager}>
         <div>
           {next && (
@@ -52,11 +35,13 @@ export default ({ data, pathContext }: Props) => {
       </div>
       {relatedPosts.length ? (
         <section>
-          <h3>関連記事</h3>
+          <Title type="h3">関連記事</Title>
           {relatedPosts.map((post: any, i: number) => {
+            console.log(post, "post")
             return (
               <div key={i}>
                 <div>
+                  <time>{post.updatedAt}</time>
                   <Link to={`/posts/${post.slug}`}>{post.title}</Link>
                 </div>
               </div>
@@ -69,59 +54,12 @@ export default ({ data, pathContext }: Props) => {
 }
 
 const style = {
-  // NOTE: markdown のスタイルは github-markdown-css をオーバーライドして運用する
-  markdown: css`
-    font-family: monaco, monospace;
-
-    *:not(code) {
-      color: ${COLOR.SITE.TEXT};
-    }
-
-    table td,
-    table th {
-      color: ${COLOR.SITE.TEXT_REVERSAL};
-    }
-
-    .gatsby-highlight-code-line {
-      background-color: ${COLOR.CODE_BLOCK.HIGHLIGHT};
-      display: block;
-      margin-right: -1em;
-      margin-left: -1em;
-      padding-right: 1em;
-      padding-left: 0.75em;
-      border-left: 0.25em solid ${COLOR.CODE_BLOCK.HIGHLIGHT};
-    }
-
-    .gatsby-highlight {
-      background-color: #2d2d2d;
-      border-radius: 0.3em;
-      margin: 0.5em 0;
-      padding: 1em;
-      overflow: auto;
-    }
-
-    .gatsby-highlight pre[class*="language-"] {
-      background-color: transparent;
-      margin: 0;
-      padding: 0;
-      overflow: initial;
-      float: left;
-      min-width: 100%;
-    }
-
-    .gatsby-highlight pre[class*="language-"].line-numbers {
-      padding-left: 2.8em;
-    }
-  `,
   dateAndTag: css`
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
   `,
-  tagList: css`
-    ${tagList};
-    justify-content: flex-end;
-  `,
+
   time: css`
     margin-bottom: 10px;
     display: block;

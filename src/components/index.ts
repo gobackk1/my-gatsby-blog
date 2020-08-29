@@ -1,3 +1,4 @@
+export { Content } from "./common/Content"
 export { Footer } from "./common/Footer"
 export { Header } from "./common/Header"
 export { Image } from "./common/Image"
