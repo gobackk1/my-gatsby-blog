@@ -56,7 +56,9 @@ export default ({ data, pathContext }: Props) => {
           {relatedPosts.map((post: any, i: number) => {
             return (
               <div key={i}>
-                <div>{post.title}</div>
+                <div>
+                  <Link to={`/posts/${post.slug}`}>{post.title}</Link>
+                </div>
               </div>
             )
           })}
