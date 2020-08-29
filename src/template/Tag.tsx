@@ -39,6 +39,11 @@ export const pageQuery = graphql`
             name
           }
           slug
+          body {
+            childMarkdownRemark {
+              excerpt(pruneLength: 100, format: PLAIN)
+            }
+          }
         }
       }
     }
