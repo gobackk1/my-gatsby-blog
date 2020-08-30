@@ -102,7 +102,7 @@ const CSS = {
     padding: 5px 10px;
     height: 30px;
     font-size: 16px;
-    background: #4e4c4c;
+    background: ${COLOR.LIGHT_GRAY};
     color: ${COLOR.WHITE};
     border: none;
     &:focus {
@@ -111,7 +111,7 @@ const CSS = {
   `,
   "search-result": css`
     width: 300px;
-    background: #4e4c4c;
+    background: ${COLOR.LIGHT_GRAY};
     position: absolute;
     top: 30px;
     left: 0;

@@ -4,6 +4,7 @@ const BLUE = "#2700f5"
 const SKY_BLUE = "#00bcd4"
 const BLACK = "#000000"
 const WHITE = "#f1f1f1"
+const LIGHT_GRAY = "#4e4c4c"
 
 export const COLOR = {
   PRIMARY,
@@ -12,6 +13,7 @@ export const COLOR = {
   BLACK,
   WHITE,
   SKY_BLUE,
+  LIGHT_GRAY,
 
   SITE: {
     BG: PRIMARY,

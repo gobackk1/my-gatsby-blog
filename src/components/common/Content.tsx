@@ -1,8 +1,10 @@
 import React from "react"
 import css from "@emotion/css"
-import { markdown } from "@/styles"
+import { markdown, COLOR } from "@/styles"
 import * as I from "@/interfaces"
 import { Tag } from "@/components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTag } from "@fortawesome/free-solid-svg-icons"
 
 export const Content: React.FC<Props> = ({ post }) => {
   const { body } = post
@@ -15,7 +17,9 @@ export const Content: React.FC<Props> = ({ post }) => {
       ></div>
       {post.tags && (
         <ul css={CSS["tag-list"]}>
-          <li>タグ:</li>
+          <li>
+            <FontAwesomeIcon icon={faTag} />
+          </li>
           {post.tags.map(({ name, slug }, index) => (
             <li key={index}>
               <Tag name={name} slug={slug} />
@@ -23,6 +27,7 @@ export const Content: React.FC<Props> = ({ post }) => {
           ))}
         </ul>
       )}
+      <div css={CSS["line"]}></div>
     </>
   )
 }
@@ -30,6 +35,7 @@ export const Content: React.FC<Props> = ({ post }) => {
 const CSS = {
   "tag-list": css`
     display: flex;
+    color: ${COLOR.ACCENT};
     > li {
       margin: 0 10px 10px 0;
       a {
@@ -41,6 +47,13 @@ const CSS = {
   // NOTE: markdown のスタイルは github-markdown-css をオーバーライドして運用する
   markdown: css`
     ${markdown}
+    margin-bottom: 40px;
+  `,
+  line: css`
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    margin: 30px 0;
   `,
 }
 
