@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { LoadingSpinner } from "@/components/"
 import { css } from "@emotion/core"
 import { Link } from "@reach/router"
-import { SETTING } from "@/styles"
+import { SETTING, COLOR } from "@/styles"
 
 const client = require("contentful").createClient({
   space: process.env.GATSBY_CONTENTFUL_SPACE_ID,
@@ -99,9 +99,15 @@ const CSS = {
   `,
   "search-input": css`
     width: 300px;
-    padding: 5px;
+    padding: 5px 10px;
     height: 30px;
     font-size: 16px;
+    background: #4e4c4c;
+    color: ${COLOR.WHITE};
+    border: none;
+    &:focus {
+      outline: 1px solid #01bcd4;
+    }
   `,
   "search-result": css`
     width: 300px;
