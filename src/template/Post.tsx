@@ -15,22 +15,22 @@ export default ({ data, pathContext }: Props) => {
       <time css={CSS["time"]}>{post.updatedAt}</time>
       <Title type="h1">{post.title}</Title>
       <Content post={post} />
-      <Pager prev={prev} next={next} />
       {relatedPosts.length ? (
-        <section>
-          <Title type="h3">関連記事</Title>
+        <section css={CSS["related"]}>
+          <Title type="h4">関連記事</Title>
           {relatedPosts.map((post: any, i: number) => {
             return (
               <div key={i}>
                 <Link to={`/posts/${post.slug}`}>
-                  <time>{post.updatedAt}</time>
-                  {post.title}
+                  <time>{post.updatedAt}</time> / {post.title}
                 </Link>
               </div>
             )
           })}
         </section>
       ) : null}
+      <div css={CSS["line"]}></div>
+      <Pager prev={prev} next={next} />
     </Layout>
   )
 }
@@ -39,6 +39,18 @@ const CSS = {
   time: css`
     margin-bottom: 10px;
     display: block;
+  `,
+  related: css`
+    margin-bottom: 30px;
+    h3 {
+      margin-bottom: 0;
+    }
+  `,
+  line: css`
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    margin: 30px 0;
   `,
 }
 

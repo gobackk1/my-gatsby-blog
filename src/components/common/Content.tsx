@@ -27,7 +27,6 @@ export const Content: React.FC<Props> = ({ post }) => {
           ))}
         </ul>
       )}
-      <div css={CSS["line"]}></div>
     </>
   )
 }
@@ -35,9 +34,10 @@ export const Content: React.FC<Props> = ({ post }) => {
 const CSS = {
   "tag-list": css`
     display: flex;
+    margin-bottom: 30px;
     color: ${COLOR.ACCENT};
     > li {
-      margin: 0 10px 10px 0;
+      margin: 0 10px 0px 0;
       a {
         display: block;
       }
@@ -48,12 +48,6 @@ const CSS = {
   markdown: css`
     ${markdown}
     margin-bottom: 40px;
-  `,
-  line: css`
-    width: 100%;
-    height: 1px;
-    background: #fff;
-    margin: 30px 0;
   `,
 }
 

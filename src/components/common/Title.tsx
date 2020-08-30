@@ -1,6 +1,5 @@
 import React from "react"
 import css from "@emotion/css"
-import { COLOR } from "@/styles"
 
 export const Title: React.FC<Props> = ({ type, children }) => {
   switch (type) {
@@ -10,6 +9,8 @@ export const Title: React.FC<Props> = ({ type, children }) => {
       return <h2 css={CSS["h2"]}>{children}</h2>
     case "h3":
       return <h3 css={CSS["h3"]}>{children}</h3>
+    case "h4":
+      return <h4 css={CSS["h4"]}>{children}</h4>
 
     default:
       return null
@@ -34,6 +35,10 @@ const CSS = {
   h3: css`
     ${common};
     font-size: 20px;
+  `,
+  h4: css`
+    ${common};
+    font-size: 18px;
   `,
 }
 type Props = {
