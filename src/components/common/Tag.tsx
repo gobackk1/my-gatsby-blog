@@ -14,9 +14,5 @@ export const Tag: React.FC<ITag> = ({ name, slug, count }) => {
 }
 
 const style = {
-  tag: css`
-    padding: 5px 10px;
-    background-color: ${COLOR.ACCENT};
-    color: ${COLOR.BLACK};
-  `,
+  tag: css``,
 }

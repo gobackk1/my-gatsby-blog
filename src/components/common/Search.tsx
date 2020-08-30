@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from "react"
+import React, { useState } from "react"
 import { LoadingSpinner } from "@/components/"
 import { css } from "@emotion/core"
 import { Link } from "@reach/router"
+import { SETTING } from "@/styles"
 
 const client = require("contentful").createClient({
   space: process.env.GATSBY_CONTENTFUL_SPACE_ID,
@@ -56,9 +57,6 @@ export const Search: React.FC = () => {
         onFocus={() => {
           setActiveStateOfInput(true)
         }}
-        onBlur={() => {
-          // setActiveStateOfInput(false)
-        }}
         type="text"
         placeholder="検索"
       />
@@ -71,7 +69,7 @@ export const Search: React.FC = () => {
           )}
           {!isLoading && result && (
             <>
-              <div css={style.resultItem}> 結果は {result.total} 件です</div>
+              <div css={style.resultTitle}> 結果は {result.total} 件です</div>
               {result.total !== 0 &&
                 result.items.map((post, i) => (
                   <div css={style.resultItem} key={i}>
@@ -91,6 +89,7 @@ export const Search: React.FC = () => {
 const style = {
   root: css`
     position: relative;
+    z-index: ${SETTING.LAYER.SEARCH_RESULT};
   `,
   input: css`
     width: 300px;
@@ -107,6 +106,9 @@ const style = {
     font-size: 13px;
   `,
   resultItem: css`
+    padding: 5px 10px;
+  `,
+  resultTitle: css`
     padding: 5px 10px;
   `,
 }

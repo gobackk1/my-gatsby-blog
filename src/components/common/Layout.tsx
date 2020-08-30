@@ -25,20 +25,6 @@ const style = {
     min-height: 1000px;
     font-size: ${SETTING.FONT_SIZE}px;
     line-height: 1.8;
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   `,
 }
 

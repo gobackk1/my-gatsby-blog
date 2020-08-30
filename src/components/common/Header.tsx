@@ -35,5 +35,8 @@ const style = {
   `,
   menuList: css`
     display: flex;
+    li {
+      margin-left: 10px;
+    }
   `,
 }
