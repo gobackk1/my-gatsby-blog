@@ -3,13 +3,18 @@ import { graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
 import * as I from "@/interfaces"
 import css from "@emotion/css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTag } from "@fortawesome/free-solid-svg-icons"
+import { COLOR } from "@/styles"
 
 export default ({ data: { postsData, tag } }: Props) => {
   return (
     <Layout>
       <SEO title="Tag" />
       <div css={CSS["title"]}>
-        <Title type="h2">タグ: {tag.name}</Title>
+        <Title type="h2">
+          <FontAwesomeIcon icon={faTag} /> {tag.name}
+        </Title>
       </div>
       <Posts data={postsData.edges} />
     </Layout>
@@ -19,6 +24,7 @@ export default ({ data: { postsData, tag } }: Props) => {
 const CSS = {
   title: css`
     margin-bottom: 20px;
+    color: ${COLOR.ACCENT};
   `,
 }
 

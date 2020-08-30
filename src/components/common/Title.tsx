@@ -17,7 +17,6 @@ export const Title: React.FC<Props> = ({ type, children }) => {
 }
 
 const common = css`
-  color: ${COLOR.WHITE};
   font-weight: bold;
   padding-bottom: 10px;
   margin-bottom: 1em;

@@ -9,7 +9,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Header, Footer } from "@/components"
 import { css, Global } from "@emotion/core"
-import { SETTING, COLOR, reset } from "@/styles"
+import { SETTING, COLOR, reset, global } from "@/styles"
 import "github-markdown-css"
 import "prismjs/themes/prism-tomorrow.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
@@ -40,18 +40,7 @@ export const Layout: React.FC = ({ children }) => {
 const CSS = {
   global: css`
     ${reset}
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+    ${global}
   `,
   wrapper: css`
     background-color: ${COLOR.SITE.BG};
