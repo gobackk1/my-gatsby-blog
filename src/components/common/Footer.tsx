@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import { SETTING } from "@/styles"
 import { useStaticQuery, graphql } from "gatsby"
 import * as I from "@/interfaces"
-import { Tag } from "@/components"
+import { Tag, Title } from "@/components"
 
 export const Footer: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -24,6 +24,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer css={CSS["footer"]}>
+      <Title type="h2">タグ</Title>
       {tags && (
         <ul css={CSS["footer-tag-list"]}>
           {tags.map(({ name, slug, blog_post }, i) => (
@@ -38,11 +39,7 @@ export const Footer: React.FC = () => {
 }
 
 const CSS = {
-  footer: css`
-    margin: 0 auto;
-    max-width: ${SETTING.CONTAINER.WIDTH}px;
-    width: 96%;
-  `,
+  footer: css``,
   "footer-tag-list": css`
     display: flex;
     > li {

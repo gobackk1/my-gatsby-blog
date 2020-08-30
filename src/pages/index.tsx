@@ -17,6 +17,7 @@ export default () => {
             updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
             tags {
               name
+              slug
             }
             slug
             body {

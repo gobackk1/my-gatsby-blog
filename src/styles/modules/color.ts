@@ -11,6 +11,7 @@ export const COLOR = {
   BLUE,
   BLACK,
   WHITE,
+  SKY_BLUE,
 
   SITE: {
     BG: PRIMARY,

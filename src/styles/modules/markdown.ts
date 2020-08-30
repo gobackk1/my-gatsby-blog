@@ -2,7 +2,13 @@ import { css } from "@emotion/core"
 import { COLOR } from "@/styles"
 
 export const markdown = css`
-  font-family: monaco, monospace;
+  code {
+    font-family: monaco, monospace;
+  }
+
+  h2 {
+    border-color: ${COLOR.SKY_BLUE};
+  }
 
   *:not(code) {
     color: ${COLOR.SITE.TEXT};

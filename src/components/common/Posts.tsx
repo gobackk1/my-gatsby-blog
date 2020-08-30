@@ -30,6 +30,7 @@ export const Posts: React.FC<Props> = ({ data }) => {
               {tags && (
                 <>
                   <FontAwesomeIcon icon={faTag} />
+                  {console.log(tags)}
                   <ul css={CSS["tag-list"]}>
                     {tags.map(({ name, slug }, index) => (
                       <li key={index}>
@@ -50,24 +51,15 @@ export const Posts: React.FC<Props> = ({ data }) => {
 const CSS = {
   post: css`
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     padding: 30px 20px 20px;
-    border: 1px solid ${COLOR.WHITE};
+    border: 2px solid ${COLOR.WHITE};
     &:hover {
-      opacity: 0.6;
+      border-color: ${COLOR.SKY_BLUE};
       cursor: pointer;
     }
     h2 {
       margin-bottom: 10px;
-    }
-    time {
-      /* padding: 3px 5px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: ${COLOR.WHITE};
-      color: ${COLOR.BLACK};
-      font-size: 12px; */
     }
     p {
       margin-bottom: 2em;

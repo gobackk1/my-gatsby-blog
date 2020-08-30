@@ -30,9 +30,9 @@ export const Layout: React.FC = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata.title} />
       <Global styles={CSS["global"]} />
       <div css={CSS["container"]}>
-        <main>{children}</main>
+        <main css={CSS["main"]}>{children}</main>
+        <Footer />
       </div>
-      <Footer />
     </div>
   )
 }
@@ -66,5 +66,8 @@ const CSS = {
     width: 96%;
     padding: 30px;
     min-height: 800px;
+  `,
+  main: css`
+    margin-bottom: 80px;
   `,
 }
