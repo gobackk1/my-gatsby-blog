@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
-import "@/styles/sass/index.scss"
 import { IPost, ITag } from "@/interfaces"
 import css from "@emotion/css"
 
@@ -9,7 +8,7 @@ export default ({ data: { postsData, tag } }: Props) => {
   return (
     <Layout>
       <SEO title="Tag" />
-      <div css={style.title}>
+      <div css={CSS["title"]}>
         <Title type="h2">タグ: {tag.name}</Title>
       </div>
       <Posts data={postsData.edges} />
@@ -17,7 +16,7 @@ export default ({ data: { postsData, tag } }: Props) => {
   )
 }
 
-const style = {
+const CSS = {
   title: css`
     margin-bottom: 20px;
   `,

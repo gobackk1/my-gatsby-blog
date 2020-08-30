@@ -5,12 +5,12 @@ import { css } from "@emotion/core"
 import { COLOR } from "@/styles"
 
 export const LoadingSpinner: React.FC = () => (
-  <div css={style.spinner}>
+  <div css={CSS["spinner"]}>
     <Loader type="ball-pulse" active={true} />
   </div>
 )
 
-const style = {
+const CSS = {
   spinner: css`
     .ball-pulse > div {
       background: ${COLOR.SPINNER};

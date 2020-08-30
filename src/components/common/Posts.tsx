@@ -4,16 +4,15 @@ import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { Title, Tag } from "@/components"
 import { COLOR } from "@/styles"
-import { tagList } from "@/styles/common"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faTag } from "@fortawesome/free-solid-svg-icons"
 
 export const Posts: React.FC<Props> = ({ data }) => {
   return (
-    <div css={style.postList}>
+    <div css={CSS["post-list"]}>
       {data.map(({ node: { tags, title, updatedAt, slug, body } }, index) => (
         <article
-          css={style.post}
+          css={CSS["post"]}
           key={index}
           onClick={() => {
             navigate(`/posts/${slug}`)
@@ -22,16 +21,16 @@ export const Posts: React.FC<Props> = ({ data }) => {
         >
           <Title type="h3">{title}</Title>
           <p>{body.childMarkdownRemark.excerpt}</p>
-          <div css={style.postFooter}>
-            <div css={style.postFooterTime}>
+          <div css={CSS["post-footer"]}>
+            <div css={CSS["post-footer-item"]}>
               <FontAwesomeIcon icon={faClock} />
               <time>{updatedAt}</time>
             </div>
-            <div css={style.tags}>
+            <div css={CSS["tags"]}>
               {tags && (
                 <>
                   <FontAwesomeIcon icon={faTag} />
-                  <ul css={style.tagList}>
+                  <ul css={CSS["tag-list"]}>
                     {tags.map(({ name, slug }, index) => (
                       <li key={index}>
                         <Tag name={name} slug={slug} />
@@ -48,7 +47,7 @@ export const Posts: React.FC<Props> = ({ data }) => {
   )
 }
 
-const style = {
+const CSS = {
   post: css`
     position: relative;
     margin-bottom: 20px;
@@ -77,31 +76,30 @@ const style = {
       justify-content: flex-end;
     }
   `,
-  postList: css`
+  "post-list": css`
     margin-bottom: 10px;
   `,
-  tagList: css`
-    ${tagList}
+  "tag-list": css`
+    display: flex;
+    > li {
+      margin: 0 10px 10px 0;
+      a {
+        display: block;
+      }
+    }
     margin-left: 10px;
   `,
   tags: css`
     display: flex;
     color: ${COLOR.ACCENT};
   `,
-  tag: css`
-    color: ${COLOR.ACCENT};
-    text-decoration: underline;
-    &:hover {
-      text-decoration: none;
-    }
-  `,
-  postFooter: css`
+  "post-footer": css`
     display: flex;
     justify-content: space-between;
     font-size: 13px;
     line-height: 1;
   `,
-  postFooterTime: css`
+  "post-footer-item": css`
     display: flex;
     time {
       padding-left: 5px;

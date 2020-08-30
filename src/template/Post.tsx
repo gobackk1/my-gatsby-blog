@@ -12,7 +12,7 @@ export default ({ data, pathContext }: Props) => {
   return (
     <Layout>
       <SEO title={post.title}></SEO>
-      <time css={style.time}>{post.updatedAt}</time>
+      <time css={CSS["time"]}>{post.updatedAt}</time>
       <Title type="h1">{post.title}</Title>
       <Content post={post} />
       <Pager prev={prev} next={next} />
@@ -35,13 +35,7 @@ export default ({ data, pathContext }: Props) => {
   )
 }
 
-const style = {
-  dateAndTag: css`
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-  `,
-
+const CSS = {
   time: css`
     margin-bottom: 10px;
     display: block;
@@ -59,6 +53,12 @@ type Props = {
     next: { title: string; slug: string }
     prev: { title: string; slug: string }
   }
+}
+
+type TRelated = {
+  slug: string
+  updateAt: string
+  title: string
 }
 
 export const pageQuery = graphql`
@@ -94,12 +94,6 @@ export const pageQuery = graphql`
     }
   }
 `
-
-type TRelated = {
-  slug: string
-  updateAt: string
-  title: string
-}
 
 const selectRelatedPost = (post: IPost, allPosts: any): TRelated[] => {
   const result = allPosts.filter((jsonPost: IPost) => {

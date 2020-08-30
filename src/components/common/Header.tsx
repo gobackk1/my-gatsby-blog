@@ -5,11 +5,11 @@ import { COLOR } from "@/styles"
 import { Search } from "@/components"
 
 export const Header: React.FC<Props> = ({ siteTitle }) => (
-  <header css={style.header}>
+  <header css={CSS["header"]}>
     <h1>
       <Link to="/">{siteTitle}</Link>
     </h1>
-    <ul css={style.menuList}>
+    <ul css={CSS["menu-list"]}>
       <li>
         <Search />
       </li>
@@ -24,7 +24,7 @@ type Props = {
   siteTitle: string
 }
 
-const style = {
+const CSS = {
   header: css`
     padding: 20px;
     background-color: ${COLOR.HEADER.BG};
@@ -33,7 +33,7 @@ const style = {
     justify-content: space-between;
     font-weight: bold;
   `,
-  menuList: css`
+  "menu-list": css`
     display: flex;
     li {
       margin-left: 10px;

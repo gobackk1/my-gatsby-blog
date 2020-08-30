@@ -50,9 +50,9 @@ export const Search: React.FC = () => {
   }
 
   return (
-    <div css={style.root}>
+    <div css={CSS["search"]}>
       <input
-        css={style.input}
+        css={CSS["search-input"]}
         onChange={onChange}
         onFocus={() => {
           setActiveStateOfInput(true)
@@ -61,18 +61,24 @@ export const Search: React.FC = () => {
         placeholder="検索"
       />
       {activeStateOfInput && (
-        <div css={style.result}>
+        <div css={CSS["search-result"]}>
           {isLoading && (
-            <div css={style.resultItem} style={{ textAlign: "center" }}>
+            <div
+              css={CSS["search-result-item"]}
+              style={{ textAlign: "center" }}
+            >
               <LoadingSpinner />
             </div>
           )}
           {!isLoading && result && (
             <>
-              <div css={style.resultTitle}> 結果は {result.total} 件です</div>
+              <div css={CSS["search-result-title"]}>
+                {" "}
+                結果は {result.total} 件です
+              </div>
               {result.total !== 0 &&
                 result.items.map((post, i) => (
-                  <div css={style.resultItem} key={i}>
+                  <div css={CSS["search-result-item"]} key={i}>
                     <Link to={`/posts/${post.fields.slug}`}>
                       {post.fields.title}
                     </Link>
@@ -86,18 +92,18 @@ export const Search: React.FC = () => {
   )
 }
 
-const style = {
-  root: css`
+const CSS = {
+  search: css`
     position: relative;
     z-index: ${SETTING.LAYER.SEARCH_RESULT};
   `,
-  input: css`
+  "search-input": css`
     width: 300px;
     padding: 5px;
     height: 30px;
     font-size: 16px;
   `,
-  result: css`
+  "search-result": css`
     width: 300px;
     background: #4e4c4c;
     position: absolute;
@@ -105,10 +111,10 @@ const style = {
     left: 0;
     font-size: 13px;
   `,
-  resultItem: css`
+  "search-result-item": css`
     padding: 5px 10px;
   `,
-  resultTitle: css`
+  "search-result-title": css`
     padding: 5px 10px;
   `,
 }
