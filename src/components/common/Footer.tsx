@@ -2,7 +2,7 @@ import React from "react"
 import { css } from "@emotion/core"
 import { SETTING } from "@/styles"
 import { useStaticQuery, graphql } from "gatsby"
-import { ITag } from "@/interfaces"
+import * as I from "@/interfaces"
 import { Tag } from "@/components"
 
 export const Footer: React.FC = () => {
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
     }
   `)
 
-  const tags: ITag[] = data.allContentfulTag.nodes
+  const tags: I.Tag[] = data.allContentfulTag.nodes
 
   return (
     <footer css={CSS["footer"]}>

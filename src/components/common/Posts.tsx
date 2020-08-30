@@ -1,5 +1,5 @@
 import React from "react"
-import { IPost } from "@/interfaces"
+import * as I from "@/interfaces"
 import { css } from "@emotion/core"
 import { navigate } from "@reach/router"
 import { Title, Tag } from "@/components"
@@ -108,5 +108,5 @@ const CSS = {
 }
 
 type Props = {
-  data: { node: IPost }[]
+  data: { node: I.Post }[]
 }

@@ -1,7 +1,7 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
-import { IPost } from "@/interfaces/IPost"
+import * as I from "@/interfaces/"
 import css from "@emotion/css"
 
 export default () => {
@@ -49,6 +49,6 @@ const style = {
 
 type Props = {
   allContentfulBlogPost: {
-    edges: { node: IPost }[]
+    edges: { node: I.Post }[]
   }
 }

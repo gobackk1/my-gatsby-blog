@@ -1,2 +1,2 @@
-export { IPost } from "./IPost"
-export { ITag } from "./ITag"
+export * from "./modules/Post"
+export * from "./modules/Tag"

@@ -1,7 +1,7 @@
 import React from "react"
 import css from "@emotion/css"
 import { markdown } from "@/styles"
-import { IPost } from "@/interfaces/IPost"
+import * as I from "@/interfaces"
 import { Tag } from "@/components"
 
 export const Content: React.FC<Props> = ({ post }) => {
@@ -45,5 +45,5 @@ const CSS = {
 }
 
 interface Props {
-  post: IPost
+  post: I.Post
 }

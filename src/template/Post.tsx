@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { Layout, SEO, Title, Content, Pager } from "@/components"
-import { IPost, ITag } from "@/interfaces"
+import * as I from "@/interfaces"
 import css from "@emotion/css"
 
 export default ({ data, pathContext }: Props) => {
@@ -44,7 +44,7 @@ const CSS = {
 
 type Props = {
   data: {
-    post: IPost
+    post: I.Post
     json: any
   }
   pathContext: {
@@ -95,15 +95,15 @@ export const pageQuery = graphql`
   }
 `
 
-const selectRelatedPost = (post: IPost, allPosts: any): TRelated[] => {
-  const result = allPosts.filter((jsonPost: IPost) => {
+const selectRelatedPost = (post: I.Post, allPosts: any): TRelated[] => {
+  const result = allPosts.filter((jsonPost: I.Post) => {
     // 記事自身は関連記事に表示しない
     if (jsonPost.id === post.id) return false
 
     let flag = false
-    const postIds = jsonPost.tags.map((tag: ITag) => tag.id!)
+    const postIds = jsonPost.tags.map((tag: I.Tag) => tag.id!)
     post.tags
-      .map((tag: ITag) => tag.id!)
+      .map((tag: I.Tag) => tag.id!)
       .forEach((id: string) => {
         if (postIds.includes(id)) {
           flag = true

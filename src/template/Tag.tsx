@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { Layout, SEO, Posts, Title } from "@/components/"
-import { IPost, ITag } from "@/interfaces"
+import * as I from "@/interfaces"
 import css from "@emotion/css"
 
 export default ({ data: { postsData, tag } }: Props) => {
@@ -55,8 +55,8 @@ export const pageQuery = graphql`
 type Props = {
   data: {
     postsData: {
-      edges: { node: IPost }[]
+      edges: { node: I.Post }[]
     }
-    tag: ITag
+    tag: I.Tag
   }
 }

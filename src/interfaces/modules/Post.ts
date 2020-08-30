@@ -1,12 +1,12 @@
-import { ITag } from "@/interfaces"
+import * as I from "@/interfaces"
 
-export interface IPost {
+export interface Post {
   id: string
   description: {
     description: string
   }
   slug: string
-  tags: ITag[]
+  tags: I.Tag[]
   title: string
   updatedAt: string
   body: {
