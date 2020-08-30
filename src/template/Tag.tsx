@@ -42,6 +42,7 @@ export const pageQuery = graphql`
           updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
           tags {
             name
+            slug
           }
           slug
           body {
