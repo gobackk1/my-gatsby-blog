@@ -19,6 +19,7 @@
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.26",
     "gatsby-plugin-styled-jsx": "^3.3.11",
+    "gatsby-plugin-tsconfig-paths": "^1.0.2",
     "gatsby-remark-prismjs": "^3.5.10",
     "gatsby-source-contentful": "^2.3.37",
     "gatsby-source-filesystem": "^2.3.24",
