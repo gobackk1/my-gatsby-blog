@@ -1,4 +1,5 @@
 import css from "@emotion/css"
+import { MEDIA } from "@/styles"
 
 export const global = css`
   *,
@@ -8,9 +9,11 @@ export const global = css`
   }
   a {
     color: inherit;
-    text-decoration: none;
     &:hover {
       text-decoration: underline;
+    }
+    ${MEDIA.PC} {
+      text-decoration: none;
     }
   }
   button {

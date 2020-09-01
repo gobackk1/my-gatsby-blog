@@ -9,7 +9,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { Header, Footer } from "@/components"
 import { css, Global } from "@emotion/core"
-import { SETTING, COLOR, reset, global } from "@/styles"
+import { SETTING, COLOR, reset, global, MEDIA } from "@/styles"
 import "github-markdown-css"
 import "prismjs/themes/prism-tomorrow.css"
 import "prismjs/plugins/line-numbers/prism-line-numbers.css"
@@ -52,10 +52,13 @@ const CSS = {
   `,
   container: css`
     margin: 0 auto;
+    padding: 0;
     max-width: ${SETTING.CONTAINER.WIDTH}px;
     width: 96%;
-    padding: 30px;
     min-height: 800px;
+    ${MEDIA.PC} {
+      padding: 30px;
+    }
   `,
   main: css`
     margin-bottom: 80px;
