@@ -8,6 +8,7 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const drawerStatus = isDrawerOpen ? "is-drawer-active" : ""
   const html = document.documentElement
+
   useEffect(() => {
     isDrawerOpen
       ? html.classList.add("is-drawer-active")
@@ -16,7 +17,7 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
 
   return (
     <header css={CSS["header"]}>
-      <h1>
+      <h1 css={CSS["header-logo"]}>
         <Link to="/">{siteTitle}</Link>
       </h1>
       <div css={CSS["drawer"]} className={drawerStatus}>
@@ -61,6 +62,11 @@ const CSS = {
     font-weight: bold;
     ${MEDIA.SP} {
       padding: 10px;
+    }
+  `,
+  "header-logo": css`
+    a {
+      text-decoration: none;
     }
   `,
   drawer: css`

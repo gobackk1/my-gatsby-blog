@@ -1,6 +1,5 @@
 import React from "react"
 import { css } from "@emotion/core"
-import { SETTING } from "@/styles"
 import { useStaticQuery, graphql } from "gatsby"
 import * as I from "@/interfaces"
 import { Tag, Title } from "@/components"
