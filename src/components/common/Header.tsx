@@ -7,13 +7,15 @@ import { Search } from "@/components"
 export const Header: React.FC<Props> = ({ siteTitle }) => {
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const drawerStatus = isDrawerOpen ? "is-drawer-active" : ""
-  const html = document.documentElement
 
   useEffect(() => {
-    isDrawerOpen
-      ? html.classList.add("is-drawer-active")
-      : html.classList.remove("is-drawer-active")
-  }, [isDrawerOpen, html])
+    const html = document ? document.documentElement : null
+    if (html) {
+      isDrawerOpen
+        ? html.classList.add("is-drawer-active")
+        : html.classList.remove("is-drawer-active")
+    }
+  }, [isDrawerOpen])
 
   return (
     <header css={CSS["header"]}>
