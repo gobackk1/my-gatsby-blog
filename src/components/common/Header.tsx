@@ -15,12 +15,10 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
   }, [isDrawerOpen, html])
 
   return (
-    <>
-      <header css={CSS["header"]}>
-        <h1>
-          <Link to="/">{siteTitle}</Link>
-        </h1>
-      </header>
+    <header css={CSS["header"]}>
+      <h1>
+        <Link to="/">{siteTitle}</Link>
+      </h1>
       <div css={CSS["drawer"]} className={drawerStatus}>
         <ul css={CSS["drawer-menu"]}>
           <li>
@@ -43,7 +41,7 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
           <span></span>
         </button>
       </div>
-    </>
+    </header>
   )
 }
 
@@ -88,12 +86,14 @@ const CSS = {
   `,
   "drawer-menu": css`
     display: block;
-    padding: 10px;
     ${MEDIA.PC} {
+      display: flex;
       li {
-        display: flex;
         margin-left: 10px;
       }
+    }
+    ${MEDIA.SP} {
+      padding: 10px;
     }
   `,
   "drawer-button": css`

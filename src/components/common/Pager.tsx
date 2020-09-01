@@ -54,10 +54,12 @@ const CSS = {
       display: flex;
       justify-content: space-between;
     }
-    &::after {
-      content: "";
-      display: block;
-      clear: both;
+    ${MEDIA.SP} {
+      &::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
     }
   `,
   "pager-next": css`
@@ -72,11 +74,13 @@ const CSS = {
   "pager-prev": css`
     ${common.pager}
     padding-right: 25px;
-    float: right;
     &::after {
       ${common.pagerArrow}
       transform: rotate(-45deg);
       right: 10px;
+    }
+    ${MEDIA.SP} {
+      float: right;
     }
   `,
 }
