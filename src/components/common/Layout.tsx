@@ -61,7 +61,10 @@ const CSS = {
     }
   `,
   main: css`
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+    ${MEDIA.PC} {
+      margin-bottom: 80px;
+    }
   `,
   overlay: css`
     position: fixed;

@@ -44,16 +44,6 @@
   "keywords": [
     "gatsby"
   ],
-  "watch": {
-    "gen": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "js,ts,tsx",
-      "ignore": "src/components/index.ts",
-      "runOnChangeOnly": true
-    }
-  },
   "license": "0BSD",
   "scripts": {
     "gen": "node generateIndex",

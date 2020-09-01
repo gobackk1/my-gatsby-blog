@@ -1,9 +1,16 @@
 import { css } from "@emotion/core"
 import { COLOR } from "@/styles"
+import { MEDIA } from "./media"
 
 export const markdown = css`
   code {
     font-family: monaco, monospace;
+  }
+
+  pre {
+    ${MEDIA.SP} {
+      font-size: 14px;
+    }
   }
 
   h2 {

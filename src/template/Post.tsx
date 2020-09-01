@@ -13,7 +13,9 @@ export default ({ data, pathContext }: Props) => {
     <Layout>
       <SEO title={post.title}></SEO>
       <time css={CSS["time"]}>{post.updatedAt}</time>
-      <Title type="h1">{post.title}</Title>
+      <div css={CSS["page-title"]}>
+        <Title type="h1">{post.title}</Title>
+      </div>
       <Content post={post} />
       {relatedPosts.length ? (
         <section css={CSS["related"]}>
@@ -36,6 +38,9 @@ export default ({ data, pathContext }: Props) => {
 }
 
 const CSS = {
+  "page-title": css`
+    margin-bottom: 20px;
+  `,
   time: css`
     margin-bottom: 10px;
     display: block;

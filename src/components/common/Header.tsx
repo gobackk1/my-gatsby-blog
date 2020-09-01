@@ -8,7 +8,6 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const drawerStatus = isDrawerOpen ? "is-drawer-active" : ""
   const html = document.documentElement
-
   useEffect(() => {
     isDrawerOpen
       ? html.classList.add("is-drawer-active")

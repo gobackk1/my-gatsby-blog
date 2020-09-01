@@ -27,4 +27,10 @@ export const global = css`
       overflow: hidden;
     }
   }
+
+  iframe {
+    ${MEDIA.SP} {
+      width: 100%;
+    }
+  }
 `

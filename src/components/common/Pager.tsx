@@ -1,7 +1,7 @@
 import React from "react"
 import css from "@emotion/css"
 import { Link } from "gatsby"
-import { COLOR } from "@/styles"
+import { COLOR, MEDIA } from "@/styles"
 
 export const Pager: React.FC<Props> = ({ prev, next }) => {
   return (
@@ -29,6 +29,9 @@ const common = {
     padding: 5px;
     position: relative;
     background: ${COLOR.LIGHT_GRAY};
+    ${MEDIA.SP} {
+      margin-bottom: 20px;
+    }
   `,
   pagerArrow: css`
     position: absolute;
@@ -46,9 +49,16 @@ const common = {
 
 const CSS = {
   pager: css`
-    display: flex;
-    justify-content: space-between;
     font-size: 14px;
+    ${MEDIA.PC} {
+      display: flex;
+      justify-content: space-between;
+    }
+    &::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
   `,
   "pager-next": css`
     ${common.pager}
@@ -62,6 +72,7 @@ const CSS = {
   "pager-prev": css`
     ${common.pager}
     padding-right: 25px;
+    float: right;
     &::after {
       ${common.pagerArrow}
       transform: rotate(-45deg);

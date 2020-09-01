@@ -12,6 +12,18 @@ const fs = require("fs")
  *
  * Other.ts
  * import { XXX } from '/TargetDir'
+ *
+ * package.json
+ * "watch": {
+    "gen": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,ts,tsx",
+      "ignore": "src/components/index.ts",
+      "runOnChangeOnly": true
+    }
+  },
  */
 
 console.log("generateIndex start")
