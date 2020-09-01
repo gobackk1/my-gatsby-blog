@@ -29,6 +29,7 @@ const common = {
     padding: 5px;
     position: relative;
     background: ${COLOR.LIGHT_GRAY};
+    overflow: hidden;
     ${MEDIA.SP} {
       margin-bottom: 20px;
     }
