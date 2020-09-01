@@ -8,7 +8,7 @@ export const Tag: React.FC<I.Tag> = ({ name, slug, count }) => {
   return (
     <Link css={CSS["tag"]} to={`/tags/${slug}`}>
       {name}
-      {count && `(${count})`}
+      {count && ` (${count})`}
     </Link>
   )
 }
