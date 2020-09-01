@@ -42,7 +42,7 @@ const CSS = {
   `,
   related: css`
     margin-bottom: 30px;
-    h3 {
+    h4 {
       margin-bottom: 0;
     }
   `,

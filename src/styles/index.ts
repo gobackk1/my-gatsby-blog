@@ -1,5 +1,6 @@
 export { COLOR } from "./modules/color"
 export { SETTING } from "./modules/setting"
+export { MEDIA } from "./modules/media"
 export { reset } from "./modules/reset"
 export { markdown } from "./modules/markdown"
 export { global } from "./modules/global"

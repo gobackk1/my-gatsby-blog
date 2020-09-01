@@ -33,6 +33,7 @@ export const Layout: React.FC = ({ children }) => {
         <main css={CSS["main"]}>{children}</main>
         <Footer />
       </div>
+      <div css={CSS["overlay"]}></div>
     </div>
   )
 }
@@ -58,5 +59,19 @@ const CSS = {
   `,
   main: css`
     margin-bottom: 80px;
+  `,
+  overlay: css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: ${SETTING.LAYER.OVERLAY};
+    .is-drawer-active & {
+      display: block;
+      background: #000000;
+      opacity: 0.4;
+    }
   `,
 }

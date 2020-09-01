@@ -26,6 +26,7 @@ const common = css`
 const CSS = {
   h1: css`
     ${common};
+    margin-bottom: 2em;
     font-size: 24px;
   `,
   h2: css`

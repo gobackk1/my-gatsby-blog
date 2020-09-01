@@ -13,4 +13,15 @@ export const global = css`
       text-decoration: underline;
     }
   }
+  button {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  html {
+    &.is-drawer-active {
+      overflow: hidden;
+    }
+  }
 `
