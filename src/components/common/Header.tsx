@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React, { useState, useEffect } from "react"
 import { css } from "@emotion/core"
 import { COLOR, MEDIA, SETTING } from "@/styles"
-import { Search } from "@/components"
+import { Search, ScreenReaderText } from "@/components"
 
 export const Header: React.FC<Props> = ({ siteTitle }) => {
   const [isDrawerOpen, toggleDrawer] = useState(false)
@@ -42,6 +42,7 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
           <span></span>
           <span></span>
           <span></span>
+          <ScreenReaderText>サイドメニュー開閉ボタン</ScreenReaderText>
         </button>
       </div>
     </header>
