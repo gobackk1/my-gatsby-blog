@@ -20,7 +20,7 @@ export default ({ data, pathContext }: Props) => {
       {relatedPosts.length ? (
         <section css={CSS["related"]}>
           <Title type="h4">関連記事</Title>
-          {relatedPosts.map((post: any, i: number) => {
+          {relatedPosts.map((post: I.Post, i: number) => {
             return (
               <div key={i}>
                 <Link to={`/posts/${post.slug}`}>
@@ -62,7 +62,9 @@ const CSS = {
 type Props = {
   data: {
     post: I.Post
-    json: any
+    json: {
+      allPosts: I.Post[]
+    }
   }
   pathContext: {
     slug: string
@@ -70,12 +72,6 @@ type Props = {
     next: { title: string; slug: string }
     prev: { title: string; slug: string }
   }
-}
-
-type TRelated = {
-  slug: string
-  updateAt: string
-  title: string
 }
 
 export const pageQuery = graphql`
@@ -112,7 +108,7 @@ export const pageQuery = graphql`
   }
 `
 
-const selectRelatedPost = (post: I.Post, allPosts: any): TRelated[] => {
+const selectRelatedPost = (post: I.Post, allPosts: I.Post[]): I.Post[] => {
   const result = allPosts.filter((jsonPost: I.Post) => {
     // 記事自身は関連記事に表示しない
     if (jsonPost.id === post.id) return false

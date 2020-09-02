@@ -87,6 +87,12 @@ const CSS = {
 }
 
 interface Props {
-  next: any
-  prev: any
+  next: {
+    slug: string
+    title: string
+  }
+  prev: {
+    slug: string
+    title: string
+  }
 }
