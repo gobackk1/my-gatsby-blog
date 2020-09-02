@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react"
-import { LoadingSpinner } from "@/components/"
+import { LoadingSpinner, ScreenReaderText } from "@/components/"
 import { css } from "@emotion/core"
 import { Link } from "@reach/router"
 import { SETTING, COLOR, MEDIA } from "@/styles"
@@ -27,7 +27,7 @@ export const Search: React.FC = () => {
     clearTimeout(timer)
     setResult(null)
 
-    if (e.currentTarget.value === "") {
+    if (e.target.value === "") {
       setActiveStateOfInput(false)
       return
     }
@@ -38,7 +38,7 @@ export const Search: React.FC = () => {
           setIsLoading(true)
           const response = await client.getEntries({
             content_type: "blogPost",
-            query: e.currentTarget.value,
+            query: e.target.value,
           })
           setResult(response)
           setIsLoading(false)
@@ -51,15 +51,19 @@ export const Search: React.FC = () => {
 
   return (
     <div css={CSS["search"]}>
-      <input
-        css={CSS["search-input"]}
-        onChange={onChange}
-        onFocus={() => {
-          setActiveStateOfInput(true)
-        }}
-        type="text"
-        placeholder="検索"
-      />
+      <label htmlFor="search">
+        <ScreenReaderText>検索</ScreenReaderText>
+        <input
+          css={CSS["search-input"]}
+          onChange={onChange}
+          onFocus={() => {
+            setActiveStateOfInput(true)
+          }}
+          type="text"
+          placeholder="検索"
+          id="search"
+        />
+      </label>
       {activeStateOfInput && (
         <div css={CSS["search-result"]}>
           {isLoading && (
@@ -73,7 +77,6 @@ export const Search: React.FC = () => {
           {!isLoading && result && (
             <>
               <div css={CSS["search-result-title"]}>
-                {" "}
                 結果は {result.total} 件です
               </div>
               {result.total !== 0 &&
