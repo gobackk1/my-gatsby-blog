@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, ChangeEvent } from "react"
 import { LoadingSpinner } from "@/components/"
 import { css } from "@emotion/core"
 import { Link } from "@reach/router"
 import { SETTING, COLOR, MEDIA } from "@/styles"
+import * as I from "@/interfaces"
 
 const client = require("contentful").createClient({
   space: process.env.GATSBY_CONTENTFUL_SPACE_ID,
@@ -16,17 +17,17 @@ export const Search: React.FC = () => {
   const [timer, setTimer] = useState<number>(0)
   const searchDelay = 500
 
-  const onChange = (e: any) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist()
     setActiveStateOfInput(true)
     incrementalSearch(e)
   }
 
-  const incrementalSearch = (e: any) => {
+  const incrementalSearch = (e: ChangeEvent<HTMLInputElement>) => {
     clearTimeout(timer)
     setResult(null)
 
-    if (e.target!.value === "") {
+    if (e.currentTarget.value === "") {
       setActiveStateOfInput(false)
       return
     }
@@ -37,11 +38,10 @@ export const Search: React.FC = () => {
           setIsLoading(true)
           const response = await client.getEntries({
             content_type: "blogPost",
-            query: e.target.value,
+            query: e.currentTarget.value,
           })
           setResult(response)
           setIsLoading(false)
-          console.log(response)
         } catch (e) {
           alert("サーバーと接続ができませんでした。")
         }
@@ -132,6 +132,6 @@ const CSS = {
 }
 
 interface IResultState {
-  items: any[]
+  items: I.Item[]
   total: number
 }
