@@ -11,9 +11,6 @@ export default () => {
         edges {
           node {
             title
-            description {
-              description
-            }
             updatedAt(formatString: "YYYY-MM-DD", locale: "ja")
             tags {
               name

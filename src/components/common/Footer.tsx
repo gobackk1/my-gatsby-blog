@@ -28,7 +28,11 @@ export const Footer: React.FC = () => {
         <ul css={CSS["footer-tag-list"]}>
           {tags.map(({ name, slug, blog_post }, i) => (
             <li key={i}>
-              <Tag name={name} slug={slug} count={blog_post!.length} />
+              <Tag
+                name={name}
+                slug={slug}
+                count={blog_post ? blog_post.length : 0}
+              />
             </li>
           ))}
         </ul>
