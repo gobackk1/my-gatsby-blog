@@ -135,6 +135,8 @@ const CSS = {
 }
 
 interface IResultState {
-  items: I.Item[]
+  items: {
+    fields: { title: string; slug: string }
+  }[]
   total: number
 }
