@@ -1,3 +1,46 @@
+## このブログについて
+
+web 系企業就職の際のポートフォリオ&備忘録です。
+
+### 作るのに使ったもの
+
+- Netlify
+- Contentful
+- Gatsby
+- Typescript/Javascript
+- CSSinJS
+- Node.js
+
+## 運用
+
+### 記事公開
+
+1. Contentful で記事を公開
+2. WebHook がトリガーされて Netlify のビルドが走る
+3. ビルドが終われば本番に反映される
+
+### コード修正
+
+1. ローカルで修正して Github へ push
+2. WebHook がトリガーされて Netlify のビルドが走る
+3. ビルドが終われば本番に反映される
+
+## メモ
+
+### Contentful とは
+
+- Headless CMS と呼ばれる API ベースの CMS
+- API ベースでコンテンツを管理・取得できるので、フロントとバックを切り離すことができるのが利点
+
+#### 無料プランの注意点
+
+- 5000 レコードまで。画像をたくさん使わなければ気にならない
+- API コールが月 200 万
+
+### Netlify とは
+
+- 静的ウェブサイトを簡単にホスティング・運用できるサービス
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
