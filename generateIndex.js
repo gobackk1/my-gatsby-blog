@@ -39,7 +39,7 @@ targetDirs.forEach(targetDir => {
     const files = fs.readdirSync(`${targetDir}/${childDir}`)
     files.forEach(file => {
       const name = file.replace(/\.(tsx|ts|js)/, "")
-      result += `export { ${name} } from './${childDir}/${name}'\n`
+      result += `export { ${name} } from "./${childDir}/${name}"\n`
     })
   })
 
