@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby"
 import { Layout, SEO, Title, Content, Pager } from "@/components"
 import * as I from "@/interfaces"
 import css from "@emotion/css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock } from "@fortawesome/free-solid-svg-icons"
 
 export default ({ data, pathContext }: Props) => {
   const { post, json } = data
@@ -12,7 +14,10 @@ export default ({ data, pathContext }: Props) => {
   return (
     <Layout>
       <SEO title={post.title}></SEO>
-      <time css={CSS["time"]}>{post.updatedAt}</time>
+      <div css={CSS["page-date"]}>
+        <FontAwesomeIcon icon={faClock} size={"lg"} />
+        <time css={CSS["time"]}>{post.updatedAt}</time>
+      </div>
       <div css={CSS["page-title"]}>
         <Title type="h1">{post.title}</Title>
       </div>
@@ -41,8 +46,14 @@ const CSS = {
   "page-title": css`
     margin-bottom: 20px;
   `,
-  time: css`
+  "page-date": css`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin-bottom: 10px;
+  `,
+  time: css`
+    margin-left: 5px;
     display: block;
   `,
   related: css`
