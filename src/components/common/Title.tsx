@@ -1,6 +1,6 @@
 import React from "react"
 import css from "@emotion/css"
-import { MEDIA } from "@/styles"
+import { MEDIA, COLOR } from "@/styles"
 
 export const Title: React.FC<Props> = ({ type, children }) => {
   switch (type) {
@@ -28,9 +28,11 @@ const common = css`
 const CSS = {
   h1: css`
     ${common};
-    font-size: 20px;
+    padding: 10px;
+    font-size: 24px;
+    background: ${COLOR.LIGHT_GRAY};
     ${MEDIA.PC} {
-      font-size: 24px;
+      font-size: 30px;
     }
   `,
   h2: css`
