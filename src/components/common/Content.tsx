@@ -48,6 +48,7 @@ const CSS = {
   markdown: css`
     ${markdown}
     margin-bottom: 40px;
+    min-height: 600px;
   `,
 }
 
