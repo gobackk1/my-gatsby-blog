@@ -34,6 +34,7 @@ export const Content: React.FC<Props> = ({ post }) => {
 const CSS = {
   "tag-list": css`
     display: flex;
+    align-items: center;
     margin-bottom: 30px;
     color: ${COLOR.ACCENT};
     > li {
@@ -48,6 +49,7 @@ const CSS = {
   markdown: css`
     ${markdown}
     margin-bottom: 40px;
+    min-height: 600px;
   `,
 }
 

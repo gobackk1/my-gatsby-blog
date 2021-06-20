@@ -81,6 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // 関連記事のリンクパスを生成するために、全ての記事のメタ情報をjsonにまとめる。
   fs.writeFileSync("./data/articles.json", JSON.stringify(postsJson, null, 4))
 
   tags.nodes.forEach(tag => {

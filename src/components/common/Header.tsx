@@ -27,9 +27,10 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
           <li>
             <Search />
           </li>
-          <li>
+          {/* <li>
+            何か実績ができたときに追加
             <Link to="/work/">work</Link>
-          </li>
+          </li> */}
         </ul>
         <button
           css={CSS["drawer-button"]}

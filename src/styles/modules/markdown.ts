@@ -56,4 +56,12 @@ export const markdown = css`
   .gatsby-highlight pre[class*="language-"].line-numbers {
     padding-left: 2.8em;
   }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
 `

@@ -11,7 +11,7 @@ import { MEDIA } from "@/styles"
 export const Posts: React.FC<Props> = ({ data }) => {
   return (
     <div css={CSS["post-list"]}>
-      {data.map(({ node: { tags, title, updatedAt, slug, body } }, index) => (
+      {data.map(({ node: { tags, title, updatedAt, slug, description } }, index) => (
         <article
           css={CSS["post"]}
           key={index}
@@ -24,7 +24,7 @@ export const Posts: React.FC<Props> = ({ data }) => {
             <Title type="h3">{title}</Title>
           </div>
           <div css={CSS["post-excerpt"]}>
-            <p>{body.childMarkdownRemark.excerpt}</p>
+            <p>{description.description}</p>
           </div>
           <div css={CSS["post-footer"]}>
             <div css={CSS["post-footer-item"]}>
@@ -82,7 +82,6 @@ const CSS = {
     display: flex;
     justify-content: flex-end;
     > li {
-      margin: 0 10px 10px 0;
       a {
         display: block;
       }
@@ -92,11 +91,12 @@ const CSS = {
   "post-footer": css`
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    align-items: center;
     line-height: 1;
   `,
   "post-footer-tags": css`
     display: flex;
+    align-items: center;
     color: ${COLOR.ACCENT};
   `,
   "post-footer-item": css`
