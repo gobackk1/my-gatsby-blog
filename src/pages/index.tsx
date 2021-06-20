@@ -22,6 +22,9 @@ export default () => {
                 excerpt(pruneLength: 100, format: PLAIN)
               }
             }
+            description {
+              description
+            }
           }
         }
       }
