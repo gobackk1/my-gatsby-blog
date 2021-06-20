@@ -7,7 +7,7 @@ import css from "@emotion/css"
 export default () => {
   const data: Props = useStaticQuery(graphql`
     {
-      allContentfulBlogPost {
+      allContentfulBlogPost(sort: { fields: updatedAt, order: DESC }) {
         edges {
           node {
             title
