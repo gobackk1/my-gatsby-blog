@@ -19,6 +19,7 @@ export const COLOR = {
     BG: PRIMARY,
     TEXT: WHITE,
     TEXT_REVERSAL: BLACK,
+    TAG_TEXT: PRIMARY,
   },
 
   HEADER: {

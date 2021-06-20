@@ -23,6 +23,9 @@ export const Tag: React.FC<I.Tag> = ({ name, slug, count }) => {
 
 const CSS = {
   tag: css`
-    color: ${COLOR.ACCENT};
+    background: ${COLOR.ACCENT};
+    color: ${COLOR.SITE.TAG_TEXT};
+    padding: 5px;
+    font-weight: bold;
   `,
 }

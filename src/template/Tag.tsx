@@ -13,7 +13,7 @@ export default ({ data: { postsData, tag } }: Props) => {
       <SEO title="Tag" />
       <div css={CSS["title"]}>
         <Title type="h2">
-          <FontAwesomeIcon icon={faTag} /> {tag.name}
+          <FontAwesomeIcon icon={faTag} /> {tag.name} の記事一覧
         </Title>
       </div>
       <Posts data={postsData.edges} />

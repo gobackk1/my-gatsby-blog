@@ -82,7 +82,6 @@ const CSS = {
     display: flex;
     justify-content: flex-end;
     > li {
-      margin: 0 10px 10px 0;
       a {
         display: block;
       }
@@ -92,11 +91,12 @@ const CSS = {
   "post-footer": css`
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    align-items: center;
     line-height: 1;
   `,
   "post-footer-tags": css`
     display: flex;
+    align-items: center;
     color: ${COLOR.ACCENT};
   `,
   "post-footer-item": css`
