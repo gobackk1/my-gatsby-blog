@@ -82,6 +82,9 @@ const CSS = {
     display: flex;
     justify-content: flex-end;
     > li {
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
       a {
         display: block;
       }
