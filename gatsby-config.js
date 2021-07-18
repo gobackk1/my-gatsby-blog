@@ -9,15 +9,6 @@ module.exports = {
     author: `kengo kawabata`,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: "G-ZB551GCL22",
-    //     head: true,
-    //     // Avoids sending pageview hits from custom paths
-    //     // exclude: ["/preview/**", "/do-not-track/me/too/"],
-    //   },
-    // },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     {
