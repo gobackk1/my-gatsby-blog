@@ -1,5 +1,5 @@
 import css from "@emotion/css"
-import { MEDIA } from "@/styles"
+import { MEDIA, SETTING } from "@/styles"
 
 export const global = css`
   *,
@@ -26,6 +26,12 @@ export const global = css`
     &.is-drawer-active {
       overflow: hidden;
     }
+  }
+
+  body {
+    font-family: monospace;
+    letter-spacing: 0.1em;
+    line-height: ${SETTING.LINE_HEIGHT};
   }
 
   iframe {

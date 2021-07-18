@@ -8,4 +8,5 @@ export const SETTING = {
     SP_DRAWER: 9,
     OVERLAY: 5,
   },
+  LINE_HEIGHT: 1.8,
 } as const

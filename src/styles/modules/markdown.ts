@@ -1,8 +1,11 @@
 import { css } from "@emotion/core"
-import { COLOR } from "@/styles"
+import { COLOR, SETTING } from "@/styles"
 import { MEDIA } from "./media"
 
 export const markdown = css`
+  p {
+    line-height: ${SETTING.LINE_HEIGHT};
+  }
   code {
     font-family: monaco, monospace;
   }
