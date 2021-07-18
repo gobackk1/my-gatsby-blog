@@ -45,6 +45,7 @@ const CSS = {
   footer: css``,
   "footer-tag-list": css`
     display: flex;
+    flex-wrap: wrap;
     > li {
       margin: 0 10px 10px 0;
       a {
